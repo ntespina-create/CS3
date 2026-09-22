@@ -47,7 +47,7 @@ class AssignmentSubmission:
         return self.__submitted_files
     
     def get_status_report(self):
-        return f"ID: {self.student_id},|, Name: {self.student_name},|, Status: {self._assignment_title},{self.__submitted_files},|, Grade: {self.__grade},|"
+        return f"ID: {self.student_id},|, Name: {self.student_name},|, Status: {self.__is_submitted},|, Grade: {self.__grade},|"
 
 print("---INITIALIZING DROPBOX FOR STUDENTS---")
 student1 = AssignmentSubmission(student_name="Alex Gonzaga", student_id="pshs-1090-x", assignment_title="CS-101", due_date="2026-10-01", is_submitted=True, grade=0, submitted_files=[])
