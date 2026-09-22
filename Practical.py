@@ -1,5 +1,4 @@
---py
-#class AssignmentSubmission:
+class AssignmentSubmission:
 
 
     def __init__(self, student_name:str, student_id:str, assignment_title:str, due_date:str, is_submitted:bool, grade:float, submitted_files:list[str]):
@@ -15,7 +14,7 @@
         if 0 <= grade <= 100:
             return bool(grade)
         else:
-            raise ValueError("Grade must be between 0 and 100.")
+            print("Not Graded")
         
     def __check_submission_status(self)->bool:
         return bool(self.__is_submitted)
@@ -25,15 +24,16 @@
     
     def add_file(self, filename:str):
         if self.__is_duplicate(filename):
-            
+            print(f"File '{filename}' has already been submitted.")
         else:
             self.__submitted_files.append(filename)
+            self.__is_submitted = True
 
     def remove_file(self, filename:str):
         if self.__is_duplicate(filename):
             self.__submitted_files.remove(filename)
         else:
-            raise ValueError(f"File '{filename}' not found in submitted files.")
+            print(f"File '{filename}' not found in submitted files.")
         
     def assign_grade(self, score:float):
         if self.__check_submission_status():
@@ -47,7 +47,7 @@
         return self.__submitted_files
     
     def get_status_report(self):
-        return f"Student: {self.student_name}, ID: {self.student_id}, Assignment: {self._assignment_title}, Due Date: {self._due_date}, Submitted: {self.__is_submitted}, Grade: {self.__grade}, Files: {self.__submitted_files}"
+        return f"ID: {self.student_id},|, Name: {self.student_name},|, Status: {self._assignment_title},{self.__submitted_files},|, Grade: {self.__grade},|"
 
 print("---INITIALIZING DROPBOX FOR STUDENTS---")
 student1 = AssignmentSubmission(student_name="Alex Gonzaga", student_id="pshs-1090-x", assignment_title="CS-101", due_date="2026-10-01", is_submitted=True, grade=0, submitted_files=[])
